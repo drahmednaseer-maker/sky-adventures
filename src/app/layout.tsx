@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { NAV, SITE_URL, contact, site } from '@/lib/site';
+import { NAV, SEARCH_INDEX, SITE_URL, contact, site } from '@/lib/site';
 import './globals.css';
 import './ui.css';
 
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
-        <Header nav={NAV} site={contact} />
+        <Header nav={NAV} site={contact} index={SEARCH_INDEX} />
         <main id="main">{children}</main>
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />

@@ -30,8 +30,20 @@ export type CardProduct = {
 export type Destination = { slug: string; name: string; blurb: string; img: Img | null; count: number };
 export type Category = { slug: string; name: string; blurb: string };
 export type Testimonial = { body: string; name: string; place: string };
-export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
-export type SiteContact = { name: string; phone: string; phone_href: string; email: string; logo: Img };
+export type NavLink = { label: string; href: string; meta?: string | null };
+export type NavFeature = { title: string; href: string; img: Img; meta: string };
+export type NavItem = {
+  label: string;
+  href: string;
+  /** Present on the trip categories — renders the mega panel. */
+  panel?: { blurb: string; count: number; links: NavLink[]; featured: NavFeature };
+};
+/** Slim index behind the header's search overlay. */
+export type SearchItem = { t: string; h: string; c: string; d: string | null };
+export type SiteContact = {
+  name: string; phone: string; phone_href: string;
+  email: string; facebook: string; logo: Img;
+};
 
 export const CAT_LABEL: Record<string, string> = {
   trekking: 'Trekking', expedition: 'Expedition', tour: 'Tour',
