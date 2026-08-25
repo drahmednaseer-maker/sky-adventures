@@ -113,7 +113,7 @@ export default function Home() {
             {STEPS.map(({ n, t, d, icon: I }) => (
               <li key={n}>
                 <span className="step-i"><I /></span>
-                <span className="step-n">{n}</span>
+                <span className="step-n" aria-hidden="true">{n}</span>
                 <h3>{t}</h3>
                 <p>{d}</p>
               </li>

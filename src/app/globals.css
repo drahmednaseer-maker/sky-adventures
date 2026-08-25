@@ -3,7 +3,7 @@
   --ink: #0b1220;
   --ink-2: #1a2434;
   --body: #3d4a5c;
-  --muted: #6b7889;
+  --muted: #646f80;
   --line: #e3e8ef;
   --line-2: #eef2f7;
   --bg: #ffffff;
@@ -15,6 +15,11 @@
   --brand-ink: #063757;
   --accent: #f4801f;
   --accent-2: #d96a0d;
+  /* White on #f4801f is only 2.64:1 — below the 4.5:1 minimum — so labels sitting on an
+     accent fill use ink (7.09:1), and accent-coloured text on light grounds uses a
+     darker orange (5.0:1 on white). The brand orange itself is unchanged. */
+  --on-accent: #0b1220;
+  --accent-text: #a84e00;
   --snow: #dceaf6;
 
   --ok: #12805c;
@@ -82,7 +87,7 @@ p { text-wrap: pretty; }
   outline-offset: 2px;
   border-radius: 4px;
 }
-::selection { background: var(--accent); color: #fff; }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 /* ---------- Layout ---------- */
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
@@ -117,7 +122,7 @@ p { text-wrap: pretty; }
 }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
-.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 14px rgba(244, 128, 31, .3); }
+.btn-primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 4px 14px rgba(244, 128, 31, .3); }
 .btn-primary:hover { background: var(--accent-2); box-shadow: 0 7px 20px rgba(244, 128, 31, .38); }
 .btn-brand { background: var(--brand); color: #fff; box-shadow: 0 4px 14px rgba(14, 107, 168, .28); }
 .btn-brand:hover { background: var(--brand-2); }
@@ -162,7 +167,7 @@ p { text-wrap: pretty; }
   letter-spacing: .06em; text-transform: uppercase;
   padding: 6px 11px; border-radius: 999px;
 }
-.badge-r { left: auto; right: 12px; background: var(--accent); }
+.badge-r { left: auto; right: 12px; background: var(--accent); color: var(--on-accent); }
 
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13.5px; color: var(--muted); }
 .meta-item { display: inline-flex; align-items: center; gap: 6px; }
@@ -204,7 +209,7 @@ p { text-wrap: pretty; }
 .prose ul, .prose ol { padding-left: 1.3em; display: grid; gap: .45em; }
 .prose li { color: var(--body); }
 .prose li::marker { color: var(--brand); font-weight: 700; }
-.prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+.prose a:not(.btn) { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
 .prose strong { color: var(--ink); font-weight: 700; }
 .prose-full { max-width: none; }
 
