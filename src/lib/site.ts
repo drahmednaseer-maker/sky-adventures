@@ -97,6 +97,34 @@ export const NAV: NavItem[] = [
   { label: 'Contact us', href: '/contact' },
 ];
 
+/** Figures quoted on the About page, derived from the catalogue so they cannot
+ *  drift out of step with what we actually sell. */
+const metres = (p: Product) => {
+  const m = p.facts.altitude?.match(/([\d,]+)/);
+  return m ? parseInt(m[1].replace(/,/g, ''), 10) : null;
+};
+const nights = (p: Product) => {
+  const m = p.duration?.match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : null;
+};
+
+export const catalogue = {
+  trips: products.length,
+  trekking: byCat('trekking').length,
+  expedition: byCat('expedition').length,
+  tour: byCat('tour').length,
+  regions: destinations.length,
+  stages: products.reduce((n, p) => n + p.itinerary.length, 0),
+  highest: Math.max(...products.map((p) => metres(p) ?? 0)),
+  eightThousanders: products.filter((p) => (metres(p) ?? 0) >= 8000).length,
+  sevenThousanders: products.filter((p) => {
+    const m = metres(p) ?? 0;
+    return m >= 7000 && m < 8000;
+  }).length,
+  longest: Math.max(...products.map((p) => nights(p) ?? 0)),
+  shortest: Math.min(...products.map((p) => nights(p) ?? 99)),
+};
+
 /** Everything the header's search overlay needs — kept deliberately tiny. */
 export const SEARCH_INDEX: SearchItem[] = products.map((p) => ({
   t: p.title, h: `/product/${p.slug}`, c: CAT_LABEL[p.cat], d: p.duration,

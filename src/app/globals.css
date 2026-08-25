@@ -130,9 +130,8 @@ p { text-wrap: pretty; }
 
 /* ---------- Cards / grid ---------- */
 .grid { display: grid; gap: clamp(18px, 2.4vw, 28px); }
-.g-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.g-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); }
 .g-3 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
-.g-4 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
 
 .card {
   background: #fff; border: 1px solid var(--line);
@@ -194,8 +193,6 @@ p { text-wrap: pretty; }
   font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
   color: var(--brand); background: var(--snow); padding: 5px 11px; border-radius: 6px;
 }
-.tag-x { color: var(--accent-2); background: #fdefe0; }
-.tag-g { color: var(--ok); background: #dff3ec; }
 
 /* ---------- Prose ---------- */
 .prose { max-width: 72ch; }
