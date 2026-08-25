@@ -5,13 +5,13 @@ import { Chevron } from './Icons';
 
 type Group = { name: string; items: { q: string; a: string }[] };
 
-export default function Faq({ groups }: { groups: Group[] }) {
+export default function Faq({ groups, flat = false }: { groups: Group[]; flat?: boolean }) {
   const [open, setOpen] = useState<string | null>(`0-0`);
   return (
     <div className="faq">
       {groups.map((g, gi) => (
-        <section key={g.name} className="faq-g">
-          <h2>{g.name}</h2>
+        <section key={g.name || gi} className="faq-g">
+          {!flat && g.name && <h2>{g.name}</h2>}
           <div className="faq-list">
             {g.items.map((it, ii) => {
               const id = `${gi}-${ii}`;

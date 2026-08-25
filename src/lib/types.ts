@@ -17,7 +17,20 @@ export type Product = {
   desc: Block[]; itinerary: Day[]; gallery: Img[];
   /** Highest-resolution shot in the gallery — the source site often lists a thumbnail first. */
   card: Img | null;
+  /** Derived in tools/enrich.py so every trip gets a full spec panel, not just the two
+   *  that happen to carry a stats table on the source site. */
+  facts: TripFacts;
+  highlights: string[];
   reviews: number; excerpt: string;
+};
+
+export type TripFacts = {
+  altitude: string | null;
+  season: string;
+  group: string;
+  start: string | null;
+  end: string | null;
+  stages: number;
 };
 
 /** Minimal shape a card needs — keeps descriptions and itineraries out of client payloads. */
