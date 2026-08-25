@@ -932,6 +932,37 @@ main { padding-top: var(--hdr-total); }
 .fsheet-foot { padding: 16px 20px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); }
 @media (min-width: 1000px) { .fsheet { display: none; } }
 
+/* ---- shop shelves ---- */
+.shelf-hd {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px 24px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.shelf-hd h2 { font-size: clamp(21px, 2.6vw, 28px); }
+.shelf-hd p { margin-top: 7px; font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+.shelf-row {
+  display: flex; gap: 16px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+  padding: 4px 4px 16px; margin: -4px -4px 0;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.shelf-row::-webkit-scrollbar { height: 8px; }
+.shelf-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.shelf-row::-webkit-scrollbar-track { background: transparent; }
+.shelf-item { flex: none; width: min(82vw, 300px); scroll-snap-align: start; display: flex; }
+.shelf-item .card { width: 100%; }
+
+.shop-notes {
+  display: grid; gap: 10px 28px; justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), max-content));
+  margin-top: 26px;
+}
+.shop-notes p {
+  display: inline-flex; align-items: flex-start; gap: 9px;
+  font-size: 14px; color: var(--muted);
+}
+.shop-notes svg { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--brand); }
+
 /* ---- what-we-run cards ---- */
 .wcard {
   display: flex; flex-direction: column; height: 100%;
