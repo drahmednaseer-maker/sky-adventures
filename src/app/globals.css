@@ -132,6 +132,7 @@ p { text-wrap: pretty; }
 .btn-light:hover { background: #fff; color: var(--ink); border-color: #fff; }
 .btn-sm { padding: 9px 17px; font-size: 14px; min-height: 38px; }
 .btn-block { width: 100%; }
+.btn-sm.btn-block { min-height: 44px; }
 
 /* ---------- Cards / grid ---------- */
 .grid { display: grid; gap: clamp(18px, 2.4vw, 28px); }

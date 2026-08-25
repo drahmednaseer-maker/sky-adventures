@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
 import { Arrow, Chevron, Clock, Facebook, Mail, Peak, Phone, Pin, Shield, Thermo, Whats } from '@/components/Icons';
+import { faqHref } from '@/lib/faq';
 import { catalogue as c, contact, products, site } from '@/lib/site';
 
 export const metadata = {
@@ -19,11 +20,11 @@ const STEPS = [
 ];
 
 const ASKED = [
-  { q: 'How fit do I need to be?', href: '/faq' },
-  { q: 'Do I need a visa for Pakistan?', href: '/faq' },
-  { q: 'When is the best time to go?', href: '/faq' },
-  { q: 'What is included in the price?', href: '/faq' },
-  { q: 'What is your cancellation policy?', href: '/refund_returns-2' },
+  { q: 'How fit do I need to be?', href: faqHref('fitness') },
+  { q: 'Do I need a visa for Pakistan?', href: faqHref('visa') },
+  { q: 'When is the best time to go?', href: faqHref('best-season') },
+  { q: 'What is included in the price?', href: faqHref('whats-included') },
+  { q: 'Can you run private dates?', href: faqHref('private-dates') },
 ];
 
 export default function Contact() {

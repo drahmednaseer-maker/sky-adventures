@@ -86,6 +86,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const faq = [
     {
+      id: 'fitness',
       q: `How fit do I need to be for the ${p.title.toLowerCase()}?`,
       a: `This is graded ${p.difficulty.toLowerCase()}. ${
         p.cat === 'expedition'
@@ -94,14 +95,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       } If you tell us your recent hill days we will give you an honest answer.`,
     },
     {
+      id: 'season',
       q: 'When does this trip run?',
       a: `The reliable window is ${f.season}. Outside that, conditions on the route make it either unsafe or not worth the money. We can run private departures on any dates inside that window.`,
     },
     {
+      id: 'group',
       q: 'What is the group size?',
       a: `${f.group}. Smaller and private groups are available and often cost less per head than you would expect — ask us for a quote on your own dates.`,
     },
     {
+      id: 'price',
       q: 'Why is no price shown?',
       a: 'Because the honest number depends on group size, dates, hotel standard and how much of the route you cover. We quote one all-in figure for your actual group rather than a headline price that grows later.',
     },
@@ -255,7 +259,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* faq */}
             <section id="faq" className="pdp-sec">
               <h2 className="pdp-h">Questions about this trip</h2>
-              <Faq groups={[{ name: '', items: faq }]} flat />
+              <Faq groups={[{ id: 'trip-faq', name: '', blurb: '', items: faq }]} />
             </section>
           </div>
 
