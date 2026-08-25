@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
-import TourGrid from '@/components/TourGrid';
+import TourBrowser from '@/components/TourBrowser';
 import TourCard from '@/components/TourCard';
 import { Arrow } from '@/components/Icons';
 import { byDest, destinations, products, slimAll } from '@/lib/site';
@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <section className="section">
         <div className="wrap">
           {items.length > 0 ? (
-            <TourGrid items={items} />
+            <TourBrowser items={items} regions={destinations.map((x) => ({ slug: x.slug, name: x.name }))} />
           ) : (
             <>
               <div className="empty">

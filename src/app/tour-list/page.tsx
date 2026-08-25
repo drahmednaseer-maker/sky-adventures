@@ -1,5 +1,5 @@
 import ListingPage from '@/components/ListingPage';
-import { products, site, slimAll } from '@/lib/site';
+import { destinations, products, site, slimAll } from '@/lib/site';
 
 export const metadata = {
   title: 'Tour List',
@@ -13,10 +13,11 @@ export default function Page() {
       title="Tour List"
       sub="Browse the full Sky Adventures programme in list view, with duration and grade at a glance."
       items={slimAll(products)}
+      regions={destinations.map((d) => ({ slug: d.slug, name: d.name }))}
       img={site.hero_img2}
       crumbs={[{ label: 'Tour List' }]}
       layout="list"
-      sidebar={null}
+      sidebar="left"
     />
   );
 }

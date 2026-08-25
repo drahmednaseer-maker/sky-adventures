@@ -27,10 +27,16 @@ export const bySlug = (slug: string) => products.find((p) => p.slug === slug);
 export const byCat = (cat: string) => products.filter((p) => p.cat === cat);
 export const byDest = (d: string) => products.filter((p) => p.destinations.includes(d));
 
+const nights = (p: Product) => {
+  const m = p.duration?.match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : null;
+};
+
 export const slim = (p: Product): CardProduct => ({
   id: p.id, slug: p.slug, title: p.title, cat: p.cat,
   duration: p.duration, difficulty: p.difficulty, price: p.price,
   img: p.card ?? p.gallery[0] ?? null, reviews: p.reviews, excerpt: p.excerpt,
+  days: nights(p), dests: p.destinations,
 });
 export const slimAll = (list: Product[]) => list.map(slim);
 
@@ -103,11 +109,6 @@ const metres = (p: Product) => {
   const m = p.facts.altitude?.match(/([\d,]+)/);
   return m ? parseInt(m[1].replace(/,/g, ''), 10) : null;
 };
-const nights = (p: Product) => {
-  const m = p.duration?.match(/(\d+)/);
-  return m ? parseInt(m[1], 10) : null;
-};
-
 export const catalogue = {
   trips: products.length,
   trekking: byCat('trekking').length,

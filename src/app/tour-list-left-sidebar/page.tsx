@@ -1,5 +1,5 @@
 import ListingPage from '@/components/ListingPage';
-import { products, site, slimAll } from '@/lib/site';
+import { destinations, products, site, slimAll } from '@/lib/site';
 
 export const metadata = {
   title: 'Tour List Left Sidebar',
@@ -13,10 +13,11 @@ export default function Page() {
       title="Tour List Left Sidebar"
       sub="Browse all trips with filters on the left."
       items={slimAll(products)}
+      regions={destinations.map((d) => ({ slug: d.slug, name: d.name }))}
       img={site.hero_img2}
       crumbs={[{ label: 'Tour List Left Sidebar' }]}
       layout="grid"
-      sidebar={'left'}
+      sidebar="left"
     />
   );
 }

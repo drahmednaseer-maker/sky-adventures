@@ -38,6 +38,9 @@ export type CardProduct = {
   id: number; slug: string; title: string; cat: Cat;
   duration: string | null; difficulty: string; price: string | null;
   img: Img | null; reviews: number; excerpt: string;
+  /** Facets the listing filters on, kept as primitives so the payload stays small. */
+  days: number | null;
+  dests: string[];
 };
 
 export type Destination = { slug: string; name: string; blurb: string; img: Img | null; count: number };
