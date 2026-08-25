@@ -15,6 +15,11 @@ export default function Header({
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  /* The mega panels are hidden until hover, but they occupy viewport geometry, so
+     their featured images would otherwise be fetched eagerly on every page load.
+     Only mount them once the visitor first moves toward the nav. */
+  const [armed, setArmed] = useState(false);
+  const arm = () => setArmed(true);
   const path = usePathname();
   const input = useRef<HTMLInputElement>(null);
 
@@ -83,7 +88,7 @@ export default function Header({
               </span>
             </Link>
 
-            <nav className="nav-d" aria-label="Primary">
+            <nav className="nav-d" aria-label="Primary" onPointerEnter={arm} onFocusCapture={arm}>
               <ul>
                 {nav.map((item) => (
                   <li key={item.label} className={item.panel ? 'has-panel' : undefined}>
@@ -115,10 +120,15 @@ export default function Header({
                           </ul>
 
                           <Link href={item.panel.featured.href} className="mega-feat">
-                            <Image src={item.panel.featured.img.src} alt=""
-                              width={item.panel.featured.img.w} height={item.panel.featured.img.h}
-                              sizes="260px" quality={80}
-                              placeholder="blur" blurDataURL={item.panel.featured.img.blur} />
+                            {armed ? (
+                              <Image src={item.panel.featured.img.src} alt=""
+                                width={item.panel.featured.img.w} height={item.panel.featured.img.h}
+                                sizes="260px" quality={80}
+                                placeholder="blur" blurDataURL={item.panel.featured.img.blur} />
+                            ) : (
+                              <span className="mega-feat-ph" aria-hidden="true"
+                                style={{ backgroundImage: `url(${item.panel.featured.img.blur})` }} />
+                            )}
                             <span className="mega-feat-body">
                               <em>Featured</em>
                               <b>{item.panel.featured.title}</b>
