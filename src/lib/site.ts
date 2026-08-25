@@ -43,7 +43,7 @@ export const related = (p: Product, n = 4) =>
     })
     .slice(0, n);
 
-export const SITE_URL = 'https://skyadventures-pk.vercel.app';
+export const SITE_URL = 'https://sky-adventures.vercel.app';
 
 /** Primary nav mirrors the original site's menu exactly. */
 export const NAV: NavItem[] = [
