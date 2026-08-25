@@ -9,7 +9,7 @@ import TourCard from '@/components/TourCard';
 import PageHero from '@/components/PageHero';
 import { Arrow, Check, Clock, Mail, Peak, Phone, Pin, Shield, Star, Users, Whats } from '@/components/Icons';
 import {
-  CAT_LABEL, SITE_URL, bySlug, days, destinations, products, rating, related, reviewCount, site, slimAll,
+  CAT_LABEL, SITE_URL, bannerFor, bySlug, days, destinations, products, rating, related, reviewCount, site, slimAll,
 } from '@/lib/site';
 
 export const dynamicParams = false;
@@ -59,6 +59,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
 
   const rel = slimAll(related(p, 4));
+  // lead the gallery with the sharpest shot — the source site often listed a thumbnail first
+  const gallery = p.card ? [p.card, ...p.gallery.filter((g) => g.src !== p.card!.src)] : p.gallery;
   const d = days(p);
   const dests = destinations.filter((x) => p.destinations.includes(x.slug));
   const stats = Object.entries(p.stats);
@@ -68,7 +70,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     '@type': 'Product',
     name: p.title,
     description: p.excerpt,
-    image: p.gallery.map((g) => `${SITE_URL}${g.src}`),
+    image: gallery.map((g) => `${SITE_URL}${g.src}`),
     brand: { '@type': 'Brand', name: site.name },
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -90,7 +92,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <PageHero
         title={p.title}
         sub={p.excerpt}
-        img={p.gallery[0] ?? null}
+        img={bannerFor(p)}
         crumbs={[
           { label: CAT_LABEL[p.cat], href: `/product-category/${p.cat}` },
           { label: p.title },
@@ -111,7 +113,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="section">
         <div className="wrap pdp">
           <div className="pdp-main">
-            {p.gallery.length > 1 && <Gallery images={p.gallery} title={p.title} />}
+            {p.gallery.length > 1 && <Gallery images={gallery} title={p.title} />}
 
             {stats.length > 0 && (
               <section className="statgrid" aria-label="Trip facts">

@@ -28,7 +28,7 @@ export default function Cat() {
               <article key={p.slug} className="card">
                 <div className="card-media" style={{ aspectRatio: '16 / 10' }}>
                   <Image src={site.gear_img.src} alt="" width={site.gear_img.w} height={site.gear_img.h}
-                    placeholder="blur" blurDataURL={site.gear_img.blur} sizes="(max-width:1000px) 92vw, 360px" />
+                    placeholder="blur" blurDataURL={site.gear_img.blur} sizes="(max-width: 700px) 92vw, (max-width: 1100px) 48vw, 380px" quality={80} />
                   <Link href={`/blog/${p.slug}`} className="card-hit" aria-label={p.title} />
                 </div>
                 <div className="card-body">

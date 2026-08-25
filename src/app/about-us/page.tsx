@@ -32,16 +32,16 @@ export default function About() {
       <PageHero
         title="About Sky Adventures"
         sub="Fifteen years guiding the giants of the Karakoram, Himalaya and Hindu Kush — as a native team, from Skardu."
-        img={site.k2_img}
+        img={site.page_img}
         crumbs={[{ label: 'About Us' }]}
       />
 
       <section className="section">
         <div className="wrap why-grid">
           <div className="why-media">
-            <Image src={site.hero_img.src} alt="Sky Adventures crew crossing a Karakoram glacier"
-              width={site.hero_img.w} height={site.hero_img.h} placeholder="blur"
-              blurDataURL={site.hero_img.blur} sizes="(max-width:900px) 92vw, 520px" priority />
+            <Image src={site.k2_img.src} alt="Sky Adventures crew high in the Karakoram"
+              width={site.k2_img.w} height={site.k2_img.h} placeholder="blur"
+              blurDataURL={site.k2_img.blur} quality={82} sizes="(max-width: 900px) 92vw, 560px" priority />
             <div className="why-badge"><b>15</b><span>years in the Karakoram</span></div>
           </div>
           <div className="prose prose-full">

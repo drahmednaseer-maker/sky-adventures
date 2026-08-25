@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { CAT_LABEL, type CardProduct, rating, reviewCount } from '@/lib/types';
 import { Clock, Peak, Star } from './Icons';
 
-const SIZES = '(max-width: 640px) 92vw, (max-width: 1000px) 46vw, 300px';
+const SIZES = '(max-width: 700px) 92vw, (max-width: 1100px) 48vw, 380px';
 
 export default function TourCard({ p, priority = false }: { p: CardProduct; priority?: boolean }) {
   const img = p.img;
@@ -15,7 +15,7 @@ export default function TourCard({ p, priority = false }: { p: CardProduct; prio
         {p.duration && <span className="badge badge-r">{p.duration}</span>}
         {img ? (
           <Image src={img.src} alt={alt} width={img.w} height={img.h} sizes={SIZES}
-            placeholder="blur" blurDataURL={img.blur} priority={priority}
+            quality={80} placeholder="blur" blurDataURL={img.blur} priority={priority}
             loading={priority ? undefined : 'lazy'} />
         ) : <div className="ph" aria-hidden="true" />}
         <Link href={`/product/${p.slug}`} className="card-hit" aria-label={p.title} />

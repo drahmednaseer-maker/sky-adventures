@@ -30,7 +30,7 @@ export default function Gallery({ images, title }: { images: Img[]; title: strin
         <button className="gal-main" onClick={() => setOpen(true)} aria-label="Open image full size">
           <Image key={main.src} src={main.src} alt={`${title} — photo ${i + 1} of ${images.length}`}
             width={main.w} height={main.h} placeholder="blur" blurDataURL={main.blur}
-            sizes="(max-width: 1000px) 94vw, 760px" priority />
+            sizes="(max-width: 1000px) 94vw, 800px" quality={82} priority />
           <span className="gal-count">{i + 1} / {images.length}</span>
         </button>
         {images.length > 1 && (

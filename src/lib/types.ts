@@ -15,6 +15,8 @@ export type Product = {
   duration: string | null; difficulty: string; price: string | null;
   destinations: string[]; stats: Record<string, string>;
   desc: Block[]; itinerary: Day[]; gallery: Img[];
+  /** Highest-resolution shot in the gallery — the source site often lists a thumbnail first. */
+  card: Img | null;
   reviews: number; excerpt: string;
 };
 

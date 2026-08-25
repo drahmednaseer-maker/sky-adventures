@@ -14,7 +14,7 @@ export default function PageHero({
     <section className="phero">
       {img && (
         <Image src={img.src} alt="" width={img.w} height={img.h} priority sizes="100vw"
-          placeholder="blur" blurDataURL={img.blur} className="phero-bg" />
+          quality={82} placeholder="blur" blurDataURL={img.blur} className="phero-bg" />
       )}
       <div className="phero-veil" />
       <div className="wrap phero-in">

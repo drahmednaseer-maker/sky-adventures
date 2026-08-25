@@ -37,7 +37,7 @@ export default function Home() {
       <section className="hero">
         <Image src={site.hero_img.src} alt="" width={site.hero_img.w} height={site.hero_img.h}
           placeholder="blur" blurDataURL={site.hero_img.blur} priority fetchPriority="high"
-          sizes="100vw" className="hero-bg" />
+          quality={82} sizes="100vw" className="hero-bg" />
         <div className="hero-veil" />
         <div className="wrap hero-in">
           <p className="hero-kick"><Star /> Trusted by trekkers from 30+ countries</p>
@@ -67,11 +67,11 @@ export default function Home() {
           <div className="grid g-3 cat-grid">
             {categories.map((c) => {
               const list = byCat(c.slug);
-              const img = list[0]?.gallery[0];
+              const img = list[0]?.card ?? list[0]?.gallery[0];
               return (
                 <Link key={c.slug} href={`/product-category/${c.slug}`} className="cat-card">
                   {img && <Image src={img.src} alt="" width={img.w} height={img.h}
-                    placeholder="blur" blurDataURL={img.blur} sizes="(max-width:900px) 92vw, 380px" />}
+                    placeholder="blur" blurDataURL={img.blur} quality={80} sizes="(max-width: 700px) 92vw, (max-width: 1100px) 48vw, 400px" />}
                   <div className="cat-veil" />
                   <div className="cat-body">
                     <span className="cat-n">{list.length} trips</span>
@@ -147,11 +147,11 @@ export default function Home() {
             <p className="sub-sec mx-auto">From the granite of Baltistan to the Makran coast — seven regions, one country.</p>
           </div>
           <div className="dest-grid">
-            {destinations.map((d, i) => (
-              <Link key={d.slug} href={`/tour_destination/${d.slug}`} className={`dest${i === 0 ? ' dest-lg' : ''}`}>
+            {destinations.map((d) => (
+              <Link key={d.slug} href={`/tour_destination/${d.slug}`} className="dest">
                 {d.img && <Image src={d.img.src} alt="" width={d.img.w} height={d.img.h}
                   placeholder="blur" blurDataURL={d.img.blur}
-                  sizes={i === 0 ? '(max-width:900px) 92vw, 560px' : '(max-width:900px) 46vw, 280px'} />}
+                  quality={80} sizes="(max-width: 640px) 46vw, (max-width: 1000px) 31vw, 280px" />}
                 <div className="dest-veil" />
                 <div className="dest-body">
                   <h3>{d.name}</h3>
@@ -167,9 +167,9 @@ export default function Home() {
       <section className="section why-sec">
         <div className="wrap why-grid">
           <div className="why-media">
-            <Image src={site.k2_img.src} alt="K2 expedition team on the Baltoro glacier"
+            <Image src={site.k2_img.src} alt="Looking down the Karakoram glacier system from high camp"
               width={site.k2_img.w} height={site.k2_img.h} placeholder="blur" blurDataURL={site.k2_img.blur}
-              sizes="(max-width:900px) 92vw, 520px" />
+              quality={82} sizes="(max-width: 900px) 92vw, 560px" />
             <div className="why-badge"><b>15</b><span>years in the Karakoram</span></div>
           </div>
           <div>
@@ -209,8 +209,8 @@ export default function Home() {
 
       {/* ---------- CTA ---------- */}
       <section className="cta">
-        <Image src={site.hero_img2.src} alt="" width={site.hero_img2.w} height={site.hero_img2.h}
-          placeholder="blur" blurDataURL={site.hero_img2.blur} sizes="100vw" className="cta-bg" />
+        <Image src={site.cta_img.src} alt="" width={site.cta_img.w} height={site.cta_img.h}
+          placeholder="blur" blurDataURL={site.cta_img.blur} quality={80} sizes="100vw" className="cta-bg" />
         <div className="cta-veil" />
         <div className="wrap cta-in">
           <span className="eyebrow" style={{ color: '#fff' }}>Ready when you are</span>

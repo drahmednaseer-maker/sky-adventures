@@ -33,7 +33,7 @@ export default function Blog() {
                   <div className="card-media" style={{ aspectRatio: '16 / 10' }}>
                     <Image src={img.src} alt="" width={img.w} height={img.h}
                       placeholder="blur" blurDataURL={img.blur}
-                      sizes="(max-width:640px) 92vw, (max-width:1000px) 46vw, 360px" priority={i === 0} />
+                      sizes="(max-width: 700px) 92vw, (max-width: 1100px) 48vw, 380px" quality={80} priority={i === 0} />
                     <span className="badge">{p.tag}</span>
                     <Link href={`/blog/${p.slug}`} className="card-hit" aria-label={p.title} />
                   </div>

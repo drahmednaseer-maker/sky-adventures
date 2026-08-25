@@ -10,8 +10,10 @@
 .hdr.is-solid { border-bottom-color: var(--line); box-shadow: 0 2px 14px rgba(11, 18, 32, .06); }
 .hdr-in { display: flex; align-items: center; gap: 18px; height: var(--header-h); }
 
-.brand { display: flex; align-items: center; gap: 11px; flex: none; }
-.brand-mark { width: 44px; height: 44px; border-radius: 11px; object-fit: cover; }
+.brand { display: flex; align-items: center; gap: 10px; flex: none; }
+/* The emblem is a tall transparent PNG-style mark — never crop it to a square. */
+.brand-mark { width: auto; height: 46px; object-fit: contain; }
+@media (max-width: 560px) { .brand-mark { height: 40px; } }
 .brand-txt { display: flex; flex-direction: column; line-height: 1.12; }
 .brand-txt b { font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -.03em; }
 .brand-txt i { font-style: normal; font-size: 10.5px; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; font-weight: 600; }

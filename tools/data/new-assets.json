@@ -1,0 +1,46 @@
+{
+ "logo": {
+  "src": "/img/logo-mark.webp",
+  "w": 188,
+  "h": 400,
+  "blur": "data:image/webp;base64,UklGRvwBAABXRUJQVlA4WAoAAAAQAAAADwAAIQAAQUxQSPUAAAABkGPbtmlb89m20hfZKoCLYNu2bSMzM9vWt23bPCs4+55dhYiYALD1Vz8WQXIF0Z9FLSn1RN+NINM6uXCQSKizY7X+ILawbgtA5w9J/BkCpXWSLKCCOM1/8BQQ7zbXG66/XG+4trjyuMy+86CMS3FV2j9AY1ZSOAD5+Bcy7i0qQhxKwsLGOdFIJ5i9dAokkRBQy1B8TANAOlFcEMOKqBVw+3YlxYGhL5A9gJ2jTlWG2d+fjgCm/q2zMH0RADaIPu0ybv7yBjBzuanITmQk0M8RKNuHt22+E6lHZo+Nnv4ksSjwI0kUweeZrFcM6PX+J/oym2ojDwBWUDgg4AAAADAFAJ0BKhAAIgA+/WapUCslo6K1SAFgH4lsAKkUqhwBYACEY4U9VhYKKKOwIPcC+8HgAP7jTaFoSC1qayO+rzyKkhzvOi5n5by0x2lx278yNW18OyMzIAcSJ1a0pN7zjf0SgcNLWX37C0MWuWqZ8kTFwEm1YLMTZT9214BLvYY8LLGS/9HXWNCC74Nc54jfiB1vm2JMGu9PDn3MBs/7Ld3s3iTw5u1rLPpWjJpKB4C/arPtTa46HVo/X9izQly8LEa64Srymf0d7FVmK7hfWSwgEl9ScHdT1ZgJbYK6tMAA"
+ },
+ "big": {
+  "hero-rakaposhi.webp": {
+   "src": "/img/hero-rakaposhi.webp",
+   "w": 2000,
+   "h": 1112,
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoQAAkABABoJYgCdADcrIEpAAD84AO3MLfF9CU3xW49PrP3cag5gcxR1haepV3JFp5JpXlS13kyDDfWMHZfzL80QAA="
+  },
+  "hero-spantik.webp": {
+   "src": "/img/hero-spantik.webp",
+   "w": 2048,
+   "h": 1392,
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoQAAsABABoJZgCdAEfcESopGg9aIAA/sB/CWzHECsan+rr+HWg9za7M0xFcqwnqKHC6KrIOT9+mMExlR/ignXRyfDBKdEiLfC2xuFQ3Sdz95BBPBcFfPLAAAA="
+  },
+  "hero-tirich.webp": {
+   "src": "/img/hero-tirich.webp",
+   "w": 2000,
+   "h": 1200,
+   "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoQAAoABABoJZQC7AEHMGyjNXgAAP7t4bNevh7lOiXRwnpZsotKBe4mzbHgSSnwrggGd/wrp5w9+XkRij4AAA=="
+  },
+  "hero-batura.webp": {
+   "src": "/img/hero-batura.webp",
+   "w": 2550,
+   "h": 1700,
+   "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoQAAsABABoJYgCdAEfm4n73kAA4fP0Z61E3NcB2FI9JyfTed7ScJcKerIHVCSdtn1QAT3j68wwi17AAAA="
+  },
+  "hero-laila.webp": {
+   "src": "/img/hero-laila.webp",
+   "w": 1844,
+   "h": 1112,
+   "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAwAgCdASoQAAoABABoJYwCdEf/gYtWso8MAAD9PAOUM+OmoWWcL3OzCf+tCcwdscSTpm2DiJbZGW4l1n25XZxAAAA="
+  },
+  "why-karakoram.webp": {
+   "src": "/img/why-karakoram.webp",
+   "w": 1200,
+   "h": 1500,
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoQABQAPxFwsFAsJiSisAgBgCIJYgCdACP9+jaw516l+MHHAAD7okhqUG/6/W3IJtuqBuOuohfbuh7P7BiDK0UjwWHIjh/yMVZ8sUahR7zmluMQ7VFL+e1r4ShnoBMW3zAJis8zAvqSsznekGPGEAgG0iHI4AAA"
+  }
+ }
+}

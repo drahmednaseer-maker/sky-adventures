@@ -6,7 +6,10 @@ import type {
 export * from './types';
 
 const data = raw as unknown as {
-  site: Record<string, string> & { logo: Img; hero_img: Img; hero_img2: Img; k2_img: Img; gear_img: Img };
+  site: Record<string, string> & {
+    logo: Img; hero_img: Img; hero_img2: Img; k2_img: Img;
+    gear_img: Img; cta_img: Img; page_img: Img;
+  };
   products: Product[];
   destinations: Destination[];
   categories: Category[];
@@ -26,7 +29,7 @@ export const byDest = (d: string) => products.filter((p) => p.destinations.inclu
 export const slim = (p: Product): CardProduct => ({
   id: p.id, slug: p.slug, title: p.title, cat: p.cat,
   duration: p.duration, difficulty: p.difficulty, price: p.price,
-  img: p.gallery[0] ?? null, reviews: p.reviews, excerpt: p.excerpt,
+  img: p.card ?? p.gallery[0] ?? null, reviews: p.reviews, excerpt: p.excerpt,
 });
 export const slimAll = (list: Product[]) => list.map(slim);
 
@@ -42,6 +45,21 @@ export const related = (p: Product, n = 4) =>
       return sb - sa || a.id - b.id;
     })
     .slice(0, n);
+
+/** House photography, 2000-2560px wide, for full-bleed banners. */
+const BANNERS: Img[] = [site.hero_img2, site.cta_img, site.page_img, site.hero_img];
+
+/**
+ * Page banners run edge-to-edge, so they need ~1600px+ to stay sharp on a wide display.
+ * Several trips only have ~1000px photos on the source site — for those, use a house
+ * banner here and let the trip's own photos carry the gallery, where they are shown at
+ * roughly their native size.
+ */
+export const bannerFor = (p: { id: number; card: Img | null; gallery: Img[] }): Img => {
+  const own = p.card ?? p.gallery[0] ?? null;
+  if (own && own.w >= 1600) return own;
+  return BANNERS[p.id % BANNERS.length];
+};
 
 export const SITE_URL = 'https://sky-adventures.vercel.app';
 

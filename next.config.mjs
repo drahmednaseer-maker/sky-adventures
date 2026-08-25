@@ -5,8 +5,8 @@ const nextConfig = {
   compress: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [360, 480, 640, 828, 1080, 1280, 1600, 1920],
-    imageSizes: [64, 96, 128, 200, 256, 320, 400],
+    deviceSizes: [360, 480, 640, 828, 1080, 1280, 1600, 1920, 2048, 2560],
+    imageSizes: [32, 48, 64, 96, 128, 200, 256, 320, 400],
     minimumCacheTTL: 31536000,
   },
   experimental: { optimizePackageImports: [] },

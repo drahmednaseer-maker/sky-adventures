@@ -42,7 +42,7 @@ export default function Header({ nav, site }: { nav: NavItem[]; site: SiteContac
         <div className="wrap hdr-in">
           <Link href="/" className="brand" aria-label={`${site.name} — home`}>
             <Image src={site.logo.src} alt="" width={site.logo.w} height={site.logo.h}
-              placeholder="blur" blurDataURL={site.logo.blur} priority sizes="52px" className="brand-mark" />
+              priority sizes="(max-width: 560px) 30px, 34px" quality={95} className="brand-mark" />
             <span className="brand-txt">
               <b>Sky Adventures</b>
               <i>Treks · Tours · Expeditions</i>
