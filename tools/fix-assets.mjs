@@ -9,39 +9,9 @@ const blurOf = async (buf) => {
   return `data:image/webp;base64,${b.toString('base64')}`;
 };
 
-/* ---------------- 1. Logo emblem: crop, drop the white box, keep it sharp ---------------- */
-// The source logo is a 1042x625 JPEG on solid white: a hiker-and-sun emblem on the left,
-// the "sky adventures" wordmark on the right. The header pairs the emblem with live text,
-// so crop to the emblem only (measured gap between artwork and wordmark is at x=282
-// once the surrounding whitespace is trimmed) and make the white ground transparent.
-const trimmed = await sharp('/tmp/imgcheck/logo-for-header.jpg').trim({ threshold: 18 }).png().toBuffer();
-const emblem = await sharp(trimmed).extract({ left: 0, top: 0, width: 282, height: 600 }).toBuffer();
-
-const { data, info } = await sharp(emblem).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-for (let i = 0; i < data.length; i += 4) {
-  const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
-  if (r > 238 && g > 238 && b > 238) data[i + 3] = 0;              // white ground -> transparent
-  else if (r > 216 && g > 216 && b > 216) data[i + 3] = 90;        // soften the JPEG halo
-}
-const logoBuf = await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
-  .resize({ height: 400, withoutEnlargement: false, kernel: 'lanczos3' })
-  .webp({ quality: 92, alphaQuality: 100, effort: 6 })
-  .toBuffer();
-fs.writeFileSync(`${OUT}/logo-mark.webp`, logoBuf);
-const lm = await sharp(logoBuf).metadata();
-const logoEntry = { src: '/img/logo-mark.webp', w: lm.width, h: lm.height, blur: await blurOf(logoBuf) };
-console.log(`logo-mark.webp        ${lm.width}x${lm.height}  ${(logoBuf.length / 1024).toFixed(0)}KB (transparent)`);
-
-// favicon / apple-touch icon from the same emblem, on brand ground
-const iconBuf = await sharp({
-  create: { width: 512, height: 512, channels: 4, background: { r: 11, g: 18, b: 32, alpha: 1 } },
-}).composite([{
-  input: await sharp(logoBuf).resize({ height: 400 }).toBuffer(),
-  gravity: 'center',
-}]).png().toBuffer();
-fs.writeFileSync('src/app/icon.png', iconBuf);
-fs.writeFileSync('src/app/apple-icon.png', await sharp(iconBuf).resize(180, 180).png().toBuffer());
-console.log('icon.png / apple-icon.png written');
+/* ---------------- 1. Logo emblem ----------------
+   Superseded by tools/build-logo.mjs — this script's crop sliced the sun disc.
+   ------------------------------------------------------------------------- */
 
 /* ---------------- 2. Full-bleed images re-encoded at 2560px ---------------- */
 // These are used edge-to-edge, so the old 1600px cap left them soft on wide and retina screens.
@@ -73,5 +43,5 @@ fs.writeFileSync(`${OUT}/why-karakoram.webp`, portraitBuf);
 big['why-karakoram.webp'] = { src: '/img/why-karakoram.webp', w: 1200, h: 1500, blur: await blurOf(portraitBuf) };
 console.log(`why-karakoram.webp    1200x1500  ${(portraitBuf.length / 1024).toFixed(0)}KB`);
 
-fs.writeFileSync('tools/data/new-assets.json', JSON.stringify({ logo: logoEntry, big }, null, 1));
+fs.writeFileSync('tools/data/new-assets.json', JSON.stringify({ big }, null, 1));
 console.log('\nwrote tools/data/new-assets.json');
