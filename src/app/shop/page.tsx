@@ -9,7 +9,7 @@ import type { Product } from '@/lib/types';
 export const metadata = {
   title: 'Shop',
   description:
-    'Browse Sky Adventures trips by shelf — the eight-thousanders, classic Karakoram treks, trips of two weeks or less, and blossom-season tours. Every departure is quoted for your group.',
+    'Browse Sky Adventures trips by category — the eight-thousanders, classic Karakoram treks, shorter two-week trips and blossom-season tours. Quoted for your group.',
   alternates: { canonical: '/shop' },
 };
 
@@ -47,7 +47,7 @@ export default function Shop() {
       title: 'The eight-thousanders',
       blurb: `Full-service expeditions on ${eightK.length} of the world’s fourteen 8,000m peaks — K2, both Gasherbrums, Broad Peak and Nanga Parbat — with our own high-altitude staff.`,
       items: eightK,
-      href: '/product-category/expedition',
+      href: '/categories/expedition',
       cta: `All ${c.expedition} expeditions`,
     },
     {
@@ -56,7 +56,7 @@ export default function Shop() {
       title: 'Classic Karakoram treks',
       blurb: 'The big walks — Concordia and K2 Base Camp, the Gondogoro La crossing, Snow Lake and the long valley routes. Fifteen days and up.',
       items: classics,
-      href: '/product-category/trekking',
+      href: '/categories/trekking',
       cta: `All ${c.trekking} treks`,
     },
     {
@@ -74,7 +74,7 @@ export default function Shop() {
       title: 'Blossom season & cultural tours',
       blurb: 'Apricot blossom in Hunza and Skardu in early April; Lahore, the Indus valley and the south through the winter.',
       items: tours,
-      href: '/product-category/tour',
+      href: '/categories/tour',
       cta: `All ${c.tour} tours`,
     },
   ];

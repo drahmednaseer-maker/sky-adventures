@@ -18,7 +18,7 @@ export default function TourCard({ p, priority = false }: { p: CardProduct; prio
             quality={80} placeholder="blur" blurDataURL={img.blur} priority={priority}
             loading={priority ? undefined : 'lazy'} />
         ) : <div className="ph" aria-hidden="true" />}
-        <Link href={`/product/${p.slug}`} className="card-hit" aria-label={p.title} />
+        <Link href={`/tours/${p.slug}`} className="card-hit" aria-label={p.title} />
       </div>
       <div className="card-body">
         <div className="row" style={{ gap: 8 }}>
@@ -29,7 +29,7 @@ export default function TourCard({ p, priority = false }: { p: CardProduct; prio
             {rating(p).toFixed(1)} ({reviewCount(p)})
           </span>
         </div>
-        <h3 className="card-title"><Link href={`/product/${p.slug}`}>{p.title}</Link></h3>
+        <h3 className="card-title"><Link href={`/tours/${p.slug}`}>{p.title}</Link></h3>
         <div className="meta-row">
           {p.duration && <span className="meta-item"><Clock />{p.duration}</span>}
           <span className="meta-item"><Peak />{p.difficulty}</span>
@@ -38,7 +38,7 @@ export default function TourCard({ p, priority = false }: { p: CardProduct; prio
           {p.price
             ? <span className="price">{p.price} <small>/ person</small></span>
             : <span className="price-ask">Request a quote</span>}
-          <Link href={`/product/${p.slug}`} className="btn btn-ghost btn-sm">Explore</Link>
+          <Link href={`/tours/${p.slug}`} className="btn btn-ghost btn-sm">Explore</Link>
         </div>
       </div>
     </article>

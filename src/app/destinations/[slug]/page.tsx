@@ -5,7 +5,7 @@ import PageHero from '@/components/PageHero';
 import TourBrowser from '@/components/TourBrowser';
 import TourCard from '@/components/TourCard';
 import { Arrow } from '@/components/Icons';
-import { byDest, destinations, products, slimAll } from '@/lib/site';
+import { SITE_URL, byDest, destinations, products, slimAll } from '@/lib/site';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return destinations.map((d) => ({ slug: d.slug })); }
@@ -14,10 +14,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const d = destinations.find((x) => x.slug === slug);
   if (!d) return {};
+  const count = byDest(d.slug).length;
+  const title = `${d.name} tours & treks`;
+  const description = count > 0
+    ? `${d.blurb} ${count} guided trips here with native guides — free, costed itineraries.`
+    : `${d.blurb} Private, custom journeys on request with native guides — free, costed itineraries.`;
   return {
-    title: `${d.name} tours & treks`,
-    description: d.blurb,
-    alternates: { canonical: `/tour_destination/${d.slug}` },
+    title,
+    description,
+    alternates: { canonical: `/destinations/${d.slug}` },
+    openGraph: {
+      title: `${title} | Sky Adventures`, description, type: 'website',
+      url: `${SITE_URL}/destinations/${d.slug}`,
+      images: d.img ? [{ url: d.img.src }] : undefined,
+    },
   };
 }
 

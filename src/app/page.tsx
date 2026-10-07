@@ -45,7 +45,7 @@ export default function Home() {
           <p className="hero-sub">{site.hero_sub}</p>
           <div className="hero-btns">
             <Link href="/tour" className="btn btn-primary">Browse all adventures <Arrow /></Link>
-            <Link href="/product/k2-base-camp-trek" className="btn btn-light">K2 Base Camp Trek</Link>
+            <Link href="/tours/k2-base-camp-trek" className="btn btn-light">K2 Base Camp Trek</Link>
           </div>
           <ul className="hero-stats">
             <li><b>15+</b><span>Years guiding</span></li>
@@ -69,7 +69,7 @@ export default function Home() {
               const list = byCat(c.slug);
               const img = list[0]?.card ?? list[0]?.gallery[0];
               return (
-                <Link key={c.slug} href={`/product-category/${c.slug}`} className="cat-card">
+                <Link key={c.slug} href={`/categories/${c.slug}`} className="cat-card">
                   {img && <Image src={img.src} alt="" width={img.w} height={img.h}
                     placeholder="blur" blurDataURL={img.blur} quality={80} sizes="(max-width: 700px) 92vw, (max-width: 1100px) 48vw, 400px" />}
                   <div className="cat-veil" />
@@ -94,7 +94,7 @@ export default function Home() {
               <span className="eyebrow">Peoples favourite</span>
               <h2 className="h-sec">Flagship expeditions</h2>
             </div>
-            <Link href="/product-category/expedition" className="btn btn-ghost">All expeditions <Arrow /></Link>
+            <Link href="/categories/expedition" className="btn btn-ghost">All expeditions <Arrow /></Link>
           </div>
           <div className="grid g-3">
             {featured.map((p, i) => <TourCard key={p.slug} p={p} priority={i < 3} />)}
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
           <div className="dest-grid">
             {destinations.map((d) => (
-              <Link key={d.slug} href={`/tour_destination/${d.slug}`} className="dest">
+              <Link key={d.slug} href={`/destinations/${d.slug}`} className="dest">
                 {d.img && <Image src={d.img.src} alt="" width={d.img.w} height={d.img.h}
                   placeholder="blur" blurDataURL={d.img.blur}
                   quality={80} sizes="(max-width: 640px) 46vw, (max-width: 1000px) 31vw, 280px" />}

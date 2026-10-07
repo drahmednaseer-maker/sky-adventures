@@ -8,7 +8,7 @@ import { catalogue as c, contact, products, site } from '@/lib/site';
 export const metadata = {
   title: 'Contact Us',
   description:
-    'Talk to Sky Adventures in Skardu, Gilgit-Baltistan. Call, WhatsApp or email for a free costed itinerary for any trek, expedition or tour in Pakistan. Replies usually within 24 hours.',
+    'Talk to Sky Adventures in Skardu, Gilgit-Baltistan — call, WhatsApp or email for a free, costed itinerary for any trek, expedition or tour in Pakistan.',
   alternates: { canonical: '/contact' },
 };
 

@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: p.title,
     description: desc.slice(0, 158),
-    alternates: { canonical: `/product/${p.slug}` },
+    alternates: { canonical: `/tours/${p.slug}` },
     openGraph: {
       title: p.title, description: desc.slice(0, 158),
-      url: `${SITE_URL}/product/${p.slug}`, type: 'article',
+      url: `${SITE_URL}/tours/${p.slug}`, type: 'article',
       images: p.card ? [{ url: p.card.src }] : undefined,
     },
   };
@@ -133,8 +133,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     offers: {
       '@type': 'Offer', availability: 'https://schema.org/InStock', priceCurrency: 'USD',
       price: p.price ? p.price.replace(/[^0-9.]/g, '') : '0',
-      url: `${SITE_URL}/product/${p.slug}`,
+      url: `${SITE_URL}/tours/${p.slug}`,
     },
+  };
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
   };
 
   return (
@@ -148,7 +158,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="wrap phero-in tphero-in">
           <nav className="crumbs" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
-            <span><i aria-hidden="true">/</i><Link href={`/product-category/${p.cat}`}>{catLabel}</Link></span>
+            <span><i aria-hidden="true">/</i><Link href={`/categories/${p.cat}`}>{catLabel}</Link></span>
             <span><i aria-hidden="true">/</i><b>{p.title}</b></span>
           </nav>
 
@@ -305,9 +315,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <h3>Region</h3>
                 <div className="pillbar">
                   {dests.map((x) => (
-                    <Link key={x.slug} href={`/tour_destination/${x.slug}`} className="pill">{x.name}</Link>
+                    <Link key={x.slug} href={`/destinations/${x.slug}`} className="pill">{x.name}</Link>
                   ))}
-                  <Link href={`/product-category/${p.cat}`} className="pill">{catLabel}</Link>
+                  <Link href={`/categories/${p.cat}`} className="pill">{catLabel}</Link>
                 </div>
               </div>
             )}
@@ -331,6 +341,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       )}
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </>
   );
 }

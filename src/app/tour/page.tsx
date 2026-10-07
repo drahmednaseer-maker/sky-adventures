@@ -2,8 +2,8 @@ import ListingPage from '@/components/ListingPage';
 import { destinations, products, site, slimAll } from '@/lib/site';
 
 export const metadata = {
-  title: 'All Tours',
-  description: 'Every trek, expedition and cultural journey we run across Pakistan — 28 trips in the Karakoram, Himalaya and Hindu Kush.',
+  title: 'All Tours & Treks in Pakistan',
+  description: 'Every trek, expedition and cultural journey we run across Pakistan — 28 guided trips in the Karakoram, Himalaya and Hindu Kush.',
   alternates: { canonical: '/tour' },
 };
 

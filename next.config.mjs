@@ -12,6 +12,13 @@ const nextConfig = {
   experimental: { optimizePackageImports: [] },
   async redirects() {
     return [
+    { source: '/product/:path*', destination: '/tours/:path*', permanent: true },
+    { source: '/product-category/:path*', destination: '/categories/:path*', permanent: true },
+    { source: '/tour_destination/:path*', destination: '/destinations/:path*', permanent: true },
+    { source: '/category/:path*', destination: '/tours/:path*', permanent: true },
+    { source: '/tour-list-grid-view', destination: '/tour-list', permanent: true },
+    { source: '/tour-list-left-sidebar', destination: '/tour-list', permanent: true },
+    { source: '/tour-list-right-sidebar', destination: '/tour-list', permanent: true },
     { source: '/tripgo/blog', destination: '/blog', permanent: true },
     { source: '/tripgo/blog/:path*', destination: '/blog', permanent: true },
     { source: '/tripgo/:path*', destination: '/', permanent: true },

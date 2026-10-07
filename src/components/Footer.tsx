@@ -68,7 +68,7 @@ export default function Footer() {
           <ul>
             {categories.map((c) => (
               <li key={c.slug}>
-                <Link href={`/product-category/${c.slug}`}>{c.name}<span>{byCat(c.slug).length}</span></Link>
+                <Link href={`/categories/${c.slug}`}>{c.name}<span>{byCat(c.slug).length}</span></Link>
               </li>
             ))}
             <li><Link href="/tour">All {products.length} trips</Link></li>
@@ -80,7 +80,7 @@ export default function Footer() {
           <h3>Destinations</h3>
           <ul>
             {destinations.map((d) => (
-              <li key={d.slug}><Link href={`/tour_destination/${d.slug}`}>{d.name}</Link></li>
+              <li key={d.slug}><Link href={`/destinations/${d.slug}`}>{d.name}</Link></li>
             ))}
           </ul>
         </nav>
@@ -103,7 +103,7 @@ export default function Footer() {
         <h3>Popular trips</h3>
         <ul>
           {popular.map((p) => (
-            <li key={p.slug}><Link href={`/product/${p.slug}`}>{p.title}</Link></li>
+            <li key={p.slug}><Link href={`/tours/${p.slug}`}>{p.title}</Link></li>
           ))}
         </ul>
       </div>

@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { NAV, SEARCH_INDEX, SITE_URL, contact, site } from '@/lib/site';
+import { GA_ID, NAV, SEARCH_INDEX, SITE_URL, contact, site } from '@/lib/site';
 import './globals.css';
 import './ui.css';
 
@@ -50,9 +51,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: site.name,
     description: site.about_short,
     url: SITE_URL,
+    logo: `${SITE_URL}${site.logo.src}`,
+    image: `${SITE_URL}${site.logo.src}`,
     telephone: site.phone,
     email: site.email,
     address: { '@type': 'PostalAddress', addressLocality: 'Skardu', addressRegion: 'Gilgit-Baltistan', addressCountry: 'PK' },
+    geo: { '@type': 'GeoCoordinates', latitude: 35.2971, longitude: 75.6333 },
+    // Add Instagram / YouTube / TripAdvisor profile URLs here once the client provides them.
     sameAs: [site.facebook],
     areaServed: 'Pakistan',
   };
@@ -67,6 +72,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ListingPage from '@/components/ListingPage';
-import { bannerFor, byCat, categories, destinations, slimAll } from '@/lib/site';
+import { SITE_URL, bannerFor, byCat, categories, destinations, slimAll } from '@/lib/site';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return categories.map((c) => ({ slug: c.slug })); }
@@ -10,10 +10,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const c = categories.find((x) => x.slug === slug);
   if (!c) return {};
+  const count = byCat(c.slug).length;
+  const title = `${c.name} in Pakistan`;
+  const description = `${c.blurb} ${count} guided trips with native guides and free, costed itineraries.`;
   return {
-    title: `${c.name} in Pakistan`,
-    description: c.blurb,
-    alternates: { canonical: `/product-category/${c.slug}` },
+    title,
+    description,
+    alternates: { canonical: `/categories/${c.slug}` },
+    openGraph: { title: `${title} | Sky Adventures`, description, url: `${SITE_URL}/categories/${c.slug}`, type: 'website' },
   };
 }
 

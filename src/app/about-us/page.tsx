@@ -10,7 +10,7 @@ import { byCat, catalogue as c, categories, destinations, site, slimAll, testimo
 export const metadata = {
   title: 'About Us',
   description:
-    'Sky Adventures is a native Pakistani mountain operator based in Skardu, running treks, 8,000m expeditions and cultural tours across the Karakoram, Himalaya and Hindu Kush for over 15 years.',
+    'Native Pakistani mountain operator based in Skardu — 15+ years running treks, 8,000m expeditions and cultural tours across the Karakoram, Himalaya and Hindu Kush.',
   alternates: { canonical: '/about-us' },
 };
 
@@ -142,7 +142,7 @@ export default function About() {
           </div>
           <div className="grid g-3">
             {WHAT.map(({ slug, name, count, d, icon: I }) => (
-              <Link key={slug} href={`/product-category/${slug}`} className="wcard">
+              <Link key={slug} href={`/categories/${slug}`} className="wcard">
                 <span className="wcard-i"><I /></span>
                 <span className="wcard-n">{count} trips</span>
                 <h3>{name}</h3>
@@ -166,7 +166,7 @@ export default function About() {
           </div>
           <div className="dest-grid">
             {destinations.map((d) => (
-              <Link key={d.slug} href={`/tour_destination/${d.slug}`} className="dest">
+              <Link key={d.slug} href={`/destinations/${d.slug}`} className="dest">
                 {d.img && <Image src={d.img.src} alt="" width={d.img.w} height={d.img.h}
                   placeholder="blur" blurDataURL={d.img.blur} quality={80}
                   sizes="(max-width: 640px) 46vw, (max-width: 1000px) 31vw, 280px" />}

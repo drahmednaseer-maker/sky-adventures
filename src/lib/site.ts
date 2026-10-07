@@ -68,7 +68,12 @@ export const bannerFor = (p: { id: number; card: Img | null; gallery: Img[] }): 
   return BANNERS[p.id % BANNERS.length];
 };
 
-export const SITE_URL = 'https://sky-adventures.vercel.app';
+export const SITE_URL = 'https://www.skyadventures.com.pk';
+
+/** Google Analytics 4 Measurement ID (looks like "G-XXXXXXXXXX").
+ *  Empty string = analytics is off (no requests). Paste the ID from your GA4
+ *  web data stream (Admin → Data streams) here to switch it on. */
+export const GA_ID: string = 'G-EGJDFRP47D';
 
 /** Primary nav mirrors the original site's menu exactly; the three trip
  *  categories carry a panel with their trips and one featured departure. */
@@ -84,10 +89,10 @@ const panelFor = (cat: string) => {
   return {
     blurb: BLURB[cat],
     count: list.length,
-    links: list.map((p) => ({ label: p.title, href: `/product/${p.slug}`, meta: p.duration })),
+    links: list.map((p) => ({ label: p.title, href: `/tours/${p.slug}`, meta: p.duration })),
     featured: {
       title: hero.title,
-      href: `/product/${hero.slug}`,
+      href: `/tours/${hero.slug}`,
       img: (hero.card ?? hero.gallery[0])!,
       meta: [hero.duration, hero.difficulty].filter(Boolean).join(' · '),
     },
@@ -96,9 +101,9 @@ const panelFor = (cat: string) => {
 
 export const NAV: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Treks', href: '/product-category/trekking', panel: panelFor('trekking') },
-  { label: 'Expedition', href: '/product-category/expedition', panel: panelFor('expedition') },
-  { label: 'Tours', href: '/product-category/tour', panel: panelFor('tour') },
+  { label: 'Treks', href: '/categories/trekking', panel: panelFor('trekking') },
+  { label: 'Expedition', href: '/categories/expedition', panel: panelFor('expedition') },
+  { label: 'Tours', href: '/categories/tour', panel: panelFor('tour') },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact us', href: '/contact' },
 ];
@@ -128,7 +133,7 @@ export const catalogue = {
 
 /** Everything the header's search overlay needs — kept deliberately tiny. */
 export const SEARCH_INDEX: SearchItem[] = products.map((p) => ({
-  t: p.title, h: `/product/${p.slug}`, c: CAT_LABEL[p.cat], d: p.duration,
+  t: p.title, h: `/tours/${p.slug}`, c: CAT_LABEL[p.cat], d: p.duration,
 }));
 
 export const contact: SiteContact = {
